@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+  <body>
+    <nav class="navbar is-dark">
+        <nav class="navbar-start"> 
+            <a class="navbar-item" href="/index.html">
+                Home
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" href="/profile">
+                  Profile
+                </a>
+                <div class="navbar-dropdown">
+                  <a class="navbar-item" href="/">
+                    Activity
+                  </a>
+                  <a class="navbar-item" href="/">
+                    Settings
+                  </a>
+                  <a class="navbar-item" href="/">
+                    Friends
+                  </a>
+                </div>
+              </div>
+        </nav>
+        <nav class="navbar-end">
+            <div class="navbar-item">
+                <div class="field is-grouped">
+                  <p class="control">
+                    <a class="button is-light" href="/">
+                      <span>MENU?</span>
+                    </a>
+                  </p>
+                </div>
+              </div>
+        </nav>
+    </nav>
+
+    <div class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    <div class="card">
+                        <div class="card-header"><span class="card-header-title">Post</span></div>
+                        <div class="card-content">
+                            <div class="field">
+                            <input class="input is-rounded" type="text" placeholder="Text input">
+                            </div>
+                            <div class="field is-grouped">
+                                <div class="control">
+                                  <button class="button is-link">Submit</button>
+                                </div>
+                                <div class="control">
+                                  <button class="button is-link is-light">Cancel</button>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-half">
+                    <div class="card">
+                        <div class="card-header"><span class="card-header-title">Activity Feed</span></div>
+                        <div class="card-content"></div>
+                    </div>
+                </div>
+
+                <div class="column is-one-quarter">
+                    <div class="card">
+                        <div class="card-header"><span class="card-header-title">Friends</span></div>
+                        <div class="card-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>
