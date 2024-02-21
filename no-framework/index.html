@@ -1,253 +1,244 @@
 <!DOCTYPE html>
 <html>
+  <style>
+    .center{
+      text-align:center;
+    }
+  </style>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>Fitness Tracker</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"/>
   </head>
   <body>
-    <nav class="navbar is-dark">
-        <nav class="navbar-start"> 
-            <a class="navbar-item" href="/index.html">
-                Home
+    <div id="app">
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          Home
+        </a>
+
+        <a class="navbar-item">
+          <i class="ri-run-fill"></i>  <span>My Activity</span>
+        </a>
+  
+        <a class="navbar-item">
+          <i class="ri-user-smile-line"></i>  <span>Friend Feed</span>
+        </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" @click="isMenuActive = !isMenuActive">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isMenuActive }">
+        <div class="navbar-start">
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Admin Panel
             </a>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link" href="/profile">
-                  Profile
-                </a>
-                <div class="navbar-dropdown">
-                  <a class="navbar-item" href="/">
-                    Activity
-                  </a>
-                  <a class="navbar-item" href="/">
-                    Settings
-                  </a>
-                  <a class="navbar-item" href="/">
-                    Friends
-                  </a>
-                </div>
-              </div>
-        </nav>
-        <nav class="navbar-end">
-            <div class="navbar-item">
-                <div class="field is-grouped">
-                  <p class="control">
-                    <a class="button is-light" href="/">
-                      <span>BUTTON</span>
-                    </a>
-                  </p>
-                </div>
-              </div>
-        </nav>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item">
+                Jobs
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Report an issue
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light">
+                Log in
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
+
+
+
 
     <div class="section">
         <div class="container">
-            <div class="columns">
-                <div class="column is-one-quarter">
-                    <div class="card">
-                        <div class="card-header"><span class="card-header-title">Post</span></div>
-                        <div class="card-content">
-                          <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                            <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                            <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                          </div>
-                        </div>
-                        <footer class="card-footer">
-                          <a href="#" class="card-footer-item">Save</a>
-                          <a href="#" class="card-footer-item">Edit</a>
-                          <a href="#" class="card-footer-item">Delete</a>
-                        </footer>
-                    </div>
-                </div>
+            <div class="columns is-centered">
 
                 <div class="column is-half">
-                  <article class="panel">
-                        
-                    <div class="tabs is-boxed">
-                        <ul>
-                          <li class="is-active">
-                            <a>
-                              <span>Current</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a>
-                              <span>Completed</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a>
-                              <span>Upcoming</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a>
-                              <span>All</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    <div class="panel-block">
-                      <p class="control has-icons-left">
-                        <input class="input is-primary" type="text" placeholder="New Task">
-                      </p>
-                    </div>
-                    <a class="panel-block">
-                        <input type="checkbox" checked="">
-                        Make Bulma great again
-                    </a>
-                    <a class="panel-block">
-                        <input type="checkbox">
-                        Add some more features
-                    </a>
-                    <a class="panel-block">
-                        <input type="checkbox">
-                        Make a github account
-                    </a>
-                    <a class="panel-block">
-                        <input type="checkbox">
-                        Learn how to use github
-                    </a>
-                    <a class="panel-block">
-                        <input type="checkbox">
-                        add a .gitignore file
-                    </a>
-                  </article>
+                
+                  <div class="block">
+                    <div class="card">
+                      <header class="card-header">
+                        <p class="card-header-title">
+                          Today
+                        </p>
+                        <a href="#" class="card-header-icon" aria-label="more options">
+                          <span class="icon">
+                            <i class="ri-corner-right-down-line"></i>
+                          </span>
+                        </a>
+                      </header>
+                      <div class="card-content">
+                        <div class="content">
 
-                    <article class="message">
-                      <div class="message-header">
-                        <p>Hello World</p>
-                        <button class="delete" aria-label="delete"></button>
-                      </div>
-                      <div class="message-body">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-                        <progress class="progress" value="15" max="100">15%</progress>
-                      </div>
-                    </article>
-
-                    <form action="" class="box">
-                      <div class="field">
-                          <label class="label">Name</label>
-                          <div class="control">
-                            <input class="input" type="text" placeholder="Text input">
-                          </div>
-                        </div>
-                        
-                        <div class="field">
-                          <label class="label">Username</label>
-                          <div class="control has-icons-left has-icons-right">
-                            <input class="input is-success" type="text" placeholder="Text input" value="Username">
-                          </div>
-                          <p class="help is-success">This username is available</p>
-                        </div>
-                        
-                        <div class="field">
-                          <label class="label">Email</label>
-                          <div class="control has-icons-left has-icons-right">
-                            <input class="input is-danger" type="email" placeholder="Email input" value="Email Address">
-                          </div>
-                          <p class="help is-danger">This email is invalid</p>
-                        </div>
-                        
-                        <div class="field">
-                          <label class="label">Subject</label>
-                          <div class="control">
-                            <div class="select">
-                              <select>
-                                <option>Select dropdown</option>
-                                <option>With options</option>
-                              </select>
+                          <div class="columns">
+                            <div class="column">
+                              <div class="block">
+                                <h3 class="title is-5 center">DISTANCE</h3>
+                                <div class="center">0.0</div>
+                              </div>
+                              <div class="block">
+                                <h3 class="title is-5 center">TIME</h3>
+                                <div class="center">0.0</div>
+                              </div>
+                            </div>
+                            <div class="column">
+                              <div class="block">
+                                <h3 class="title is-5 center">PACE</h3>
+                                <div class="center">0.0</div>
+                              </div>
+                              <div class="block">
+                                <h3 class="title is-5 center">CALORIES</h3>
+                                <div class="center">0.0</div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        
-                        <div class="field">
-                          <label class="label">Message</label>
-                          <div class="control">
-                            <textarea class="textarea" placeholder="Text Area"></textarea>
-                          </div>
-                        </div>
-                        
-                        <div class="field">
-                          <div class="control">
-                            <label class="checkbox">
-                              <input type="checkbox">
-                              I agree to the <a href="#">terms and conditions</a>
-                            </label>
-                          </div>
-                        </div>
-                        
-                        <div class="field">
-                          <div class="control">
-                            <label class="radio">
-                              <input type="radio" name="question">
-                              Yes
-                            </label>
-                            <label class="radio">
-                              <input type="radio" name="question">
-                              No
-                            </label>
-                          </div>
-                        </div>
-                        
-                        <div class="field is-grouped">
-                          <div class="control">
-                            <button class="button is-link">Submit</button>
-                          </div>
-                          <div class="control">
-                            <button class="button is-link is-light">Cancel</button>
-                          </div>
-                        </div>
-                  </form>
 
-                </div>
-
-                <div class="column is-one-quarter">
-                    <div class="card">
-                        <div class="card-header"><span class="card-header-title">Menu</span></div>
-                        <div class="card-content"><aside class="menu">
-                            <p class="menu-label">
-                              General
-                            </p>
-                            <ul class="menu-list">
-                              <li><a>Dashboard</a></li>
-                              <li><a>Customers</a></li>
-                            </ul>
-                            <p class="menu-label">
-                              Administration
-                            </p>
-                            <ul class="menu-list">
-                              <li><a>Team Settings</a></li>
-                              <li>
-                                <a class="is-active">Manage Your Team</a>
-                                <ul>
-                                  <li><a>Members</a></li>
-                                  <li><a>Plugins</a></li>
-                                  <li><a>Add a member</a></li>
-                                </ul>
-                              </li>
-                              <li><a>Invitations</a></li>
-                              <li><a>Cloud Storage Environment Settings</a></li>
-                              <li><a>Authentication</a></li>
-                            </ul>
-                            <p class="menu-label">
-                              Transactions
-                            </p>
-                            <ul class="menu-list">
-                              <li><a>Payments</a></li>
-                              <li><a>Transfers</a></li>
-                              <li><a>Balance</a></li>
-                            </ul>
-                          </aside></div>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+
+                  <div class="block">
+                    <div class="card">
+                      <header class="card-header">
+                        <p class="card-header-title">
+                          This Week
+                        </p>
+                        <a href="#" class="card-header-icon" aria-label="more options">
+                          <span class="icon">
+                            <i class="ri-corner-right-down-line"></i>
+                          </span>
+                        </a>
+                      </header>
+                      <div class="card-content">
+                        <div class="content">
+
+                          <div class="columns">
+                            <div class="column">
+                              <div class="block">
+                                <h3 class="title is-5 center">DISTANCE</h3>
+                                <div class="center">0.0</div>
+                              </div>
+                              <div class="block">
+                                <h3 class="title is-5 center">TIME</h3>
+                                <div class="center">0.0</div>
+                              </div>
+                            </div>
+                            <div class="column">
+                              <div class="block">
+                                <h3 class="title is-5 center">PACE</h3>
+                                <div class="center">0.0</div>
+                              </div>
+                              <div class="block">
+                                <h3 class="title is-5 center">CALORIES</h3>
+                                <div class="center">0.0</div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="block">
+                    <div class="card">
+                      <header class="card-header">
+                        <p class="card-header-title">
+                          This Year
+                        </p>
+                        <a href="#" class="card-header-icon" aria-label="more options">
+                          <span class="icon">
+                            <i class="ri-corner-right-down-line"></i>
+                          </span>
+                        </a>
+                      </header>
+                      <div class="card-content">
+                        <div class="content">
+
+                          <div class="columns">
+                            <div class="column">
+                              <div class="block">
+                                <h3 class="title is-5 center">DISTANCE</h3>
+                                <div class="center">0.0</div>
+                              </div>
+                              <div class="block">
+                                <h3 class="title is-5 center">TIME</h3>
+                                <div class="center">0.0</div>
+                              </div>
+                            </div>
+                            <div class="column">
+                              <div class="block">
+                                <h3 class="title is-5 center">PACE</h3>
+                                <div class="center">0.0</div>
+                              </div>
+                              <div class="block">
+                                <h3 class="title is-5 center">CALORIES</h3>
+                                <div class="center">0.0</div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
                 </div>
+
             </div>
         </div>
     </div>
+  </div>
+
+    <script type="module">
+      import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    
+      createApp({
+        setup() {
+          const message = ref('Hello Vue!')
+          const showAlert = ref(true);
+          const isMenuActive = ref(false);
+          return {
+            message,
+            showAlert,
+            isMenuActive
+          }
+        }
+      }).mount('#app')
+    </script>
+
 
   </body>
 </html>
