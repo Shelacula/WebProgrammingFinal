@@ -1,0 +1,11 @@
+.button.is-primary{
+    background-color: #a263b3 !important;
+}
+
+.center {
+    text-align:center;
+}
+
+.card-header-title, .card-header-icon{
+    background: #eee !important;
+}

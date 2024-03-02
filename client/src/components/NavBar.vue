@@ -1,13 +1,14 @@
 <template>
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item">
-        <RouterLink to="/stats">Home</RouterLink>
-        </a>
 
-        <a class="navbar-item" href="./activity.html">
-          <i class="ri-run-fill"></i>  <RouterLink to="/activity"><span>My Activity</span></RouterLink>
-        </a>
+        <RouterLink to="/" class="navbar-item">
+        Home
+        </RouterLink>
+
+        <RouterLink to="/activity" class="navbar-item">
+          <i class="ri-run-fill"></i><span>My Activity</span>
+        </RouterLink>
   
         <a class="navbar-item">
           <i class="ri-user-smile-line"></i>  <span>Friend Feed</span>
