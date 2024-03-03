@@ -2,10 +2,26 @@
     background-color: #a263b3 !important;
 }
 
+.button.is-primary:hover{
+  background-color: #713f77 !important;
+}
+
 .center {
     text-align:center;
 }
 
 .card-header-title, .card-header-icon{
     background: #eee !important;
+}
+
+.row{
+  display: flex !important;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.row .block {
+  max-width: 30%;
+  min-width: 300px;
 }
