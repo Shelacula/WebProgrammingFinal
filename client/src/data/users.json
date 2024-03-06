@@ -1,0 +1,28 @@
+{
+"users": [
+    {
+        "firstName": "Rey",
+        "lastName": "Solo",
+        "username": "RSolo",
+        "isAdmin": false,
+        "emails": ["rey@sw.com"],
+        "avatar": "url.jpg"
+    },
+    {
+        "firstName": "Ben",
+        "lastName": "Solo",
+        "username": "BSolo",
+        "isAdmin": false,
+        "emails": [" "],
+        "avatar": "url.jpg"
+    },
+    {
+        "firstName": "Leia",
+        "lastName": "Organa",
+        "username": "LOrgana",
+        "isAdmin": true,
+        "emails": [" "],
+        "avatar": "url.jpg"
+    }
+]
+}

@@ -25,3 +25,7 @@
   max-width: 30%;
   min-width: 300px;
 }
+
+.title{
+  text-decoration:underline;
+}
