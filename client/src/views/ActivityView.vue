@@ -1,17 +1,21 @@
 <script setup lang="ts">
     import { ref } from 'vue'
-    import { type Workout, getWorkouts } from "@/model/workouts";
+    import { type User, type Workout, getWorkouts, getUsers } from "@/model/users";
 
-    const workouts = ref([] as Workout[])
+const users = ref([] as User[])
 
-    workouts.value = getWorkouts();
+users.value = getUsers();
+const currentUser = users.value[0];
 
-    let isActive = ref(false);
+const workouts = ref([] as Workout[])
+
+workouts.value = getWorkouts(currentUser);
+
+let isActive = ref(false);
 
 function toggleMenu() {
-  isActive.value = !isActive.value;
+isActive.value = !isActive.value;
 }
-
 
 </script>
 
