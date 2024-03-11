@@ -22,7 +22,6 @@ isActive.value = !isActive.value;
 
 
 <template>
-<h1 class="title is-1">My Workouts</h1>
 <div class="columns is-centered">
 
 <div class="column is-half">

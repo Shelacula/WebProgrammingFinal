@@ -1,5 +1,4 @@
 <template>
-    <h1 class="title is-1">Friend Feed</h1>
     <div class="columns is-centered">
     
     <div class="column row">
