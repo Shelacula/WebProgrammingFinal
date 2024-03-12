@@ -1,18 +1,22 @@
 <script setup lang="ts">
     import { ref } from 'vue'
     import { type User, type Workout, getWorkouts, getUsers } from "@/model/users";
+    import ActivityCard from "@/components/ActivityCard.vue";
+    import {activeUser} from "@/components/NavBar.vue";
+
+    
 
 const users = ref([] as User[])
-
-users.value = getUsers();
-const currentUser = users.value[0];
-
 const workouts = ref([] as Workout[])
 
-workouts.value = getWorkouts(currentUser);
+users.value = getUsers();
+if(activeUser.value !== undefined){
+    workouts.value = getWorkouts(activeUser.value);
+}
+
+
 
 let isActive = ref(false);
-
 function toggleMenu() {
 isActive.value = !isActive.value;
 }
@@ -29,22 +33,9 @@ isActive.value = !isActive.value;
         <button class="button is-primary is-fullwidth" @click="toggleMenu" :class="{ 'is-active': isActive }">Add Workout</button>
     </div>
 
-    <div class="block" v-for="workout in workouts">
-        <div class="card activity">
-            <div class="card-content">
-                <div class="content">
-                    <span class="workout-title">{{ workout.title }}</span>
-                <br>
-                    {{ workout.location }}
-                <br>
-                {{ workout.duration }} on {{ workout.date }}
-                <br>
-                {{ workout.distance }} {{ workout.type }}
-                </div>
-            </div>
-            <button class="delete is-small"></button>
-        </div>
-    </div>
+    <ActivityCard  v-if="activeUser !== null" v-for="workout in workouts"
+                    :workout = "workout"
+                    />
 
 </div>
 
@@ -137,16 +128,5 @@ isActive.value = !isActive.value;
 </template>
 
 <style scoped>
-.activity{
-    display: flex;
-}
 
-.delete{
-    margin:10px;
-    margin-left:auto;
-}
-
-.workout-title{
-    font-size:2em;
-}
 </style>

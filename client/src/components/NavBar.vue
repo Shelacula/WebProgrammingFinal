@@ -1,14 +1,29 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import { ref } from 'vue';
+import {type User, getUsers} from '@/model/users';
 
 let isActive = ref(false);
+const users = ref([] as User[])
+
+users.value = getUsers();
+
 
 function toggleMenu() {
   isActive.value = !isActive.value;
 }
+</script>
+
+<script lang="ts">
+export let activeUser = ref();
+
+function chooseUser(currentUser : User){
+  activeUser.value = currentUser;
+  console.log(activeUser.value);
+}
 
 </script>
+
 
 <template>
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
@@ -36,28 +51,38 @@ function toggleMenu() {
       <div :class="{ 'is-active': isActive } " id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
     
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
+            <RouterLink v-if="activeUser !== undefined && activeUser.isAdmin" to ="/admin" class="navbar-item">
               Admin Panel
-            </a>
-    
-            <div class="navbar-dropdown">
-              <RouterLink to ="/admin" class="navbar-item">
-                Users
-              </RouterLink>
-            </div>
+            </RouterLink>
+  
           </div>
-        </div>
     
         <div class="navbar-end">
+
+          <div class="dropdown navbar-item is-hoverable">
+                <div class="dropdown-trigger">
+
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span>Choose Account</span>
+                  </button>
+                </div>
+
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                  <div class="dropdown-content">
+                    <a class="dropdown-item"  v-for="user in users" @click="chooseUser(user)">
+                      <span>{{ user.username }}</span>
+                    </a>
+                  </div>
+                </div>
+            </div>
+
+
           <div class="navbar-item">
             <div class="buttons">
               <a class="button is-primary">
                 <strong>Sign up</strong>
               </a>
-              <a class="button is-light">
-                Log in
-              </a>
+
             </div>
           </div>
         </div>
