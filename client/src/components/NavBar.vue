@@ -2,6 +2,7 @@
 import { RouterLink } from 'vue-router';
 import { ref } from 'vue';
 import {type User, getUsers} from '@/model/users';
+import {getUserWorkouts} from "@/viewModel/workouts"
 
 let isActive = ref(false);
 const users = ref([] as User[])
@@ -19,7 +20,7 @@ export let activeUser = ref();
 
 function chooseUser(currentUser : User){
   activeUser.value = currentUser;
-  console.log(activeUser.value);
+  getUserWorkouts();
 }
 
 </script>
@@ -58,7 +59,7 @@ function chooseUser(currentUser : User){
           </div>
     
         <div class="navbar-end">
-
+          <div class="navbar-item" v-if="activeUser != undefined"><span>Welcome back, {{ activeUser.firstName }}!</span></div>
           <div class="dropdown navbar-item is-hoverable">
                 <div class="dropdown-trigger">
 

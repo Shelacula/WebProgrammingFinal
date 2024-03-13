@@ -28,6 +28,14 @@ export function getWorkouts(user: User) : Workout[]{
     return user.workouts;
 }
 
+export function getAllWorkouts(): Workout[]{
+  const allWorkouts: Workout[] = [];
+  users.users.forEach(function(user){
+    allWorkouts.push(...user.workouts)
+  })
+  return allWorkouts;
+}
+
 export function removeWorkout(user : User, workout : Workout) {
 
 }

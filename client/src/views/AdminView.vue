@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { ref } from 'vue'
     import { type User, getUsers } from "@/model/users";
+    import {activeUser} from "@/components/NavBar.vue";
 
     const users = ref([] as User[])
 
@@ -16,7 +17,7 @@
    <div class="columns is-centered">
     <div class="column">
 
-            <table class="table is-fullwidth">
+            <table v-if="activeUser.isAdmin" class="table is-fullwidth">
   <thead>
     <tr>
       <th>Avatar</th>
@@ -42,6 +43,8 @@
 
   </tbody>
 </table>
+
+<h1 v-else>Login to an Admin account to view the Admin Panel.</h1>
 
 
 

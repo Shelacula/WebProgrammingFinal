@@ -10,27 +10,27 @@
         "workouts":[
             {
                 "title": "Run around campus",
-                "date" : "3/4/2024",
-                "duration": "40:00",
-                "distance": "2mi",
+                "date" : "2024-01-10",
+                "duration": "40",
+                "distance": "2",
                 "location": "SUNY New Paltz",
                 "picture": "image.jpg",
                 "type": "Run"
             },
             {
                 "title": "Swim through lake",
-                "date" : "3/5/2024",
-                "duration": "25:00",
-                "distance": "1mi",
+                "date" : "2024-02-22",
+                "duration": "25",
+                "distance": "1",
                 "location": "SUNY New Paltz",
                 "picture": "image.jpg",
                 "type": "Swim"
             },
             {
                 "title": "Hike in mountains",
-                "date" : "3/5/2024",
-                "duration": "50:00",
-                "distance": "3mi",
+                "date" : "2024-03-01",
+                "duration": "50",
+                "distance": "3",
                 "location": "SUNY New Paltz",
                 "picture": "image.jpg",
                 "type": "Hike"
@@ -47,18 +47,18 @@
         "workouts":[
             {
                 "title": "Run around campus",
-                "date" : "3/4/2024",
-                "duration": "40:00",
-                "distance": "2mi",
+                "date" : "2024-01-02",
+                "duration": "40",
+                "distance": "2",
                 "location": "SUNY New Paltz",
                 "picture": "image.jpg",
                 "type": "Run"
             },
             {
                 "title": "Run around campus",
-                "date" : "3/5/2024",
-                "duration": "25:00",
-                "distance": "1mi",
+                "date" : "2024-02-28",
+                "duration": "25",
+                "distance": "1",
                 "location": "SUNY New Paltz",
                 "picture": "image.jpg",
                 "type": "Run"
@@ -75,18 +75,18 @@
         "workouts":[
             {
                 "title": "Run around campus",
-                "date" : "3/4/2024",
-                "duration": "40:00",
-                "distance": "2mi",
+                "date" : "2024-02-29",
+                "duration": "40",
+                "distance": "2",
                 "location": "SUNY New Paltz",
                 "picture": "image.jpg",
                 "type": "Run"
             },
             {
                 "title": "Run around campus",
-                "date" : "3/5/2024",
-                "duration": "25:00",
-                "distance": "1mi",
+                "date" : "2024-03-12",
+                "duration": "25",
+                "distance": "1",
                 "location": "SUNY New Paltz",
                 "picture": "image.jpg",
                 "type": "Run"

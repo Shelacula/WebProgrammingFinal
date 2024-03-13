@@ -3,6 +3,11 @@ import type { Workout } from "@/model/users";
 
 const workouts = defineProps<{
     workout: Workout;
+    i: number;
+}>();
+
+const emit = defineEmits<{
+    deleteWorkout: [index: number]
 }>();
 
 </script>
@@ -16,12 +21,12 @@ const workouts = defineProps<{
                 <br>
                     {{ workout.location }}
                 <br>
-                {{ workout.duration }} on {{ workout.date }}
+                {{ workout.distance }} mile {{ workout.type }}
                 <br>
-                {{ workout.distance }} {{ workout.type }}
+                {{ workout.duration }} minutes on {{ workout.date }}
                 </div>
             </div>
-            <button class="delete is-small"></button>
+            <button class="delete is-small" @click="emit('deleteWorkout', i)"></button>
         </div>
     </div>
 </template>
@@ -29,6 +34,14 @@ const workouts = defineProps<{
 <style scoped>
 .activity{
     display: flex;
+}
+
+.activity .card-content{
+    line-height: 2em;
+}
+
+.block{
+    transition: .5s;
 }
 
 .delete{
