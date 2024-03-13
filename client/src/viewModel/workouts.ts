@@ -14,7 +14,6 @@ export function getUserWorkouts(){
 }
 
 export function saveWorkout(workout : Workout){
-    console.log(workout)
     workouts.value.push(workout)
 }
 
@@ -23,4 +22,5 @@ export function deleteWorkout(index : number){
 }
 
 export const refWorkouts = () => workouts;
+export const refUsers = () => users;
 

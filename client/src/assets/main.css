@@ -16,14 +16,13 @@
 
 .row{
   display: flex !important;
+  flex-direction:column;
   gap: 20px;
-  flex-wrap: wrap;
   justify-content: center;
 }
 
 .row .block {
-  max-width: 30%;
-  min-width: 300px;
+  flex-grow: 1;
 }
 
 .title{

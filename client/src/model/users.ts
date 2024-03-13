@@ -35,7 +35,3 @@ export function getAllWorkouts(): Workout[]{
   })
   return allWorkouts;
 }
-
-export function removeWorkout(user : User, workout : Workout) {
-
-}

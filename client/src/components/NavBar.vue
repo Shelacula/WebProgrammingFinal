@@ -18,6 +18,7 @@ function toggleMenu() {
 <script lang="ts">
 export let activeUser = ref();
 
+
 function chooseUser(currentUser : User){
   activeUser.value = currentUser;
   getUserWorkouts();
@@ -83,9 +84,9 @@ function chooseUser(currentUser : User){
               <a class="button is-primary">
                 <strong>Sign up</strong>
               </a>
-
             </div>
           </div>
+
         </div>
       </div>
     </nav>

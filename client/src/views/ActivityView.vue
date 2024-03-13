@@ -8,9 +8,9 @@
 
     
 const workouts = refWorkouts();
-
-
 let isActive = ref(false);
+
+
 function toggleMenu() {
 isActive.value = !isActive.value;
 }
@@ -32,12 +32,14 @@ const newWorkout: Workout = {
 <template>
 <div class="columns is-centered">
 
-<div class="column is-half">
-    <div class="block row">
+    <h1 v-if="activeUser == null">Please login to continue.</h1>
+<div v-else class="column is-half">
+    
+    <div class="block row" >
         <button class="button is-primary is-fullwidth" @click="toggleMenu" :class="{ 'is-active': isActive }">Add Workout</button>
     </div>
 
-    <ActivityCard  v-if="activeUser !== null" v-for="(workout, i) in workouts"
+    <ActivityCard v-for="(workout, i) in workouts"
                     :workout = "workout"
                     :i = "i" @deleteWorkout="deleteWorkout"
                     />
@@ -106,10 +108,10 @@ const newWorkout: Workout = {
     <div class="select">
     <select v-model="newWorkout.type">
         <option disabled value="">Please select one</option>
-        <option>Running</option>
-        <option>Walking</option>
-        <option>Swimming</option>
-        <option>Hiking</option>
+        <option>Run</option>
+        <option>Walk</option>
+        <option>Swim</option>
+        <option>Hike</option>
     </select>
     </div>
 </div>
@@ -117,7 +119,7 @@ const newWorkout: Workout = {
 
 <div class="field is-grouped">
 <div class="control">
-    <button class="button is-primary" @click="saveWorkout(newWorkout)">Submit</button>
+    <button class="button is-primary" @click="saveWorkout(newWorkout); toggleMenu()" :class="{ 'is-active': isActive }">Submit</button>
 </div>
 <div class="control">
     <button class="button is-link is-light" @click="toggleMenu" :class="{ 'is-active': isActive }">Cancel</button>
@@ -134,7 +136,3 @@ const newWorkout: Workout = {
 
 
 </template>
-
-<style scoped>
-
-</style>

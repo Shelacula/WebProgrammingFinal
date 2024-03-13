@@ -2,14 +2,9 @@
     import { ref } from 'vue'
     import { type User, getUsers } from "@/model/users";
     import {activeUser} from "@/components/NavBar.vue";
+    import {refUsers} from "@/viewModel/workouts"
 
-    const users = ref([] as User[])
-
-    users.value = getUsers();
-
-    function removeUser(user: User){
-        
-    }
+    const users = refUsers();
 
 </script>
 
@@ -31,7 +26,7 @@
   </thead>
   <tbody>
     <tr v-for="user in users">
-      <td><img :src="user.avatar"></td>
+      <td class="avatar"><img :src="user.avatar"></td>
       <td>{{ user.firstName }}</td>
       <td>{{ user.lastName }}</td>
       <td>{{ user.emails }}</td>
@@ -54,3 +49,20 @@
     </div>
     
 </template>
+
+<style scoped>
+.avatar{
+  padding: 0;
+  height:50px;
+  width:50px;
+  overflow:hidden;
+}
+
+.avatar img{
+  height:100% !important;
+  width:100% !important;
+  object-fit:cover;
+  object-position:center;
+  border-radius:.5em;
+}
+</style>

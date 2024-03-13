@@ -6,33 +6,33 @@
         "username": "RSolo",
         "isAdmin": false,
         "emails": ["rey@sw.com"],
-        "avatar": "url.jpg",
+        "avatar": "https://i.imgur.com/UpXLAcW.png",
         "workouts":[
             {
-                "title": "Run around campus",
+                "title": "Went for a run around campus",
                 "date" : "2024-01-10",
-                "duration": "40",
+                "duration": "20",
                 "distance": "2",
                 "location": "SUNY New Paltz",
-                "picture": "image.jpg",
+                "picture": "https://i.imgur.com/Z436hZA.jpg",
                 "type": "Run"
             },
             {
-                "title": "Swim through lake",
+                "title": "Swam through the lake",
                 "date" : "2024-02-22",
-                "duration": "25",
+                "duration": "10",
                 "distance": "1",
                 "location": "SUNY New Paltz",
-                "picture": "image.jpg",
+                "picture": "https://i.imgur.com/Z436hZA.jpg",
                 "type": "Swim"
             },
             {
-                "title": "Hike in mountains",
+                "title": "Went for a hike",
                 "date" : "2024-03-01",
-                "duration": "50",
+                "duration": "45",
                 "distance": "3",
                 "location": "SUNY New Paltz",
-                "picture": "image.jpg",
+                "picture": "https://i.imgur.com/Z436hZA.jpg",
                 "type": "Hike"
             }
         ]
@@ -43,25 +43,25 @@
         "username": "BSolo",
         "isAdmin": false,
         "emails": [" "],
-        "avatar": "url.jpg",
+        "avatar": "https://i.imgur.com/v35hjnc.png",
         "workouts":[
             {
-                "title": "Run around campus",
+                "title": "Hiked up the mountain",
                 "date" : "2024-01-02",
-                "duration": "40",
+                "duration": "30",
                 "distance": "2",
                 "location": "SUNY New Paltz",
-                "picture": "image.jpg",
-                "type": "Run"
+                "picture": "https://i.imgur.com/Z436hZA.jpg",
+                "type": "Hike"
             },
             {
-                "title": "Run around campus",
+                "title": "Swam through the lake",
                 "date" : "2024-02-28",
-                "duration": "25",
+                "duration": "10",
                 "distance": "1",
                 "location": "SUNY New Paltz",
-                "picture": "image.jpg",
-                "type": "Run"
+                "picture": "https://i.imgur.com/Z436hZA.jpg",
+                "type": "Swim"
             }
         ]
     },
@@ -71,24 +71,24 @@
         "username": "LOrgana",
         "isAdmin": true,
         "emails": [" "],
-        "avatar": "url.jpg",
+        "avatar": "https://i.imgur.com/K2iHFyO.jpeg",
         "workouts":[
             {
-                "title": "Run around campus",
+                "title": "Ran around campus",
                 "date" : "2024-02-29",
-                "duration": "40",
+                "duration": "30",
                 "distance": "2",
                 "location": "SUNY New Paltz",
-                "picture": "image.jpg",
+                "picture": "https://i.imgur.com/Z436hZA.jpg",
                 "type": "Run"
             },
             {
-                "title": "Run around campus",
+                "title": "Ran around campus again",
                 "date" : "2024-03-12",
-                "duration": "25",
+                "duration": "10",
                 "distance": "1",
                 "location": "SUNY New Paltz",
-                "picture": "image.jpg",
+                "picture": "https://i.imgur.com/Z436hZA.jpg",
                 "type": "Run"
             }
         ]

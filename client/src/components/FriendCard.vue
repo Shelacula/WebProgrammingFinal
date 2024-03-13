@@ -5,6 +5,7 @@ const workouts = defineProps<{
     workout: Workout;
     user: User;
 }>();
+
 </script>
 
 <template>
@@ -13,14 +14,14 @@ const workouts = defineProps<{
             <div class="card">
                 <div class="card-image">
                     <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    <img :src="workout.picture" alt="Post Image">
                     </figure>
                 </div>
                 <div class="card-content">
                     <div class="media">
                     <div class="media-left">
-                        <figure class="image is-48x48">
-                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                        <figure class="image is-48x48 avatar">
+                        <img :src="user.avatar" alt="User Image">
                         </figure>
                     </div>
                     <div class="media-content">
@@ -30,9 +31,9 @@ const workouts = defineProps<{
                     </div>
     
                     <div class="content">
-                    {{ workout.title }} 
-                    <br>
-                    <time>{{ workout.distance }} miles on {{workout.date}}</time>
+                    <p class="friend-title">{{ workout.title }}</p> 
+                    
+                    <time>{{ workout.distance }} mile(s) {{ workout.type }} on {{workout.date}}</time>
                     </div>
                 </div>
             </div>
@@ -42,5 +43,22 @@ const workouts = defineProps<{
 </template>
 
 <style scoped>
+.avatar{
+    overflow:hidden;
+    border-radius:.5em;
+}
 
+.avatar img{
+    object-fit:cover;
+    object-position:center;
+    height:100%;
+    width:100%;
+    max-height: unset;
+    max-width: unset;
+}
+
+.friend-title{
+    font-size:1.2em;
+    font-weight:bold;
+}
 </style>

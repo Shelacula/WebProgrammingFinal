@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type {statCards} from "@/views/StatsView.vue"
+import type {statCards} from "@/viewModel/stats"
 
 let isActive = ref(false);
 
