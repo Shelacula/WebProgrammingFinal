@@ -6,7 +6,12 @@ export const users = ref([] as User[])
 const workouts = ref([] as Workout[])
 let session = refSession();
 
-users.value = await getUsers();
+getUsers()
+    .then((data) => {
+    if(data){
+        users.value = data
+    }
+    })
 
 export function getUserWorkouts(){
     if(session.user){
