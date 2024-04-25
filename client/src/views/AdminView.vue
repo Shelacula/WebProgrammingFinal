@@ -1,10 +1,11 @@
 <script setup lang="ts">
     import { ref } from 'vue'
     import { type User, getUsers } from "@/model/users";
-    import {activeUser} from "@/components/NavBar.vue";
+    import {refSession} from "@/viewModel/userSession";
     import {refUsers} from "@/viewModel/workouts"
 
     const users = refUsers();
+    let session = refSession();
 
 </script>
 
@@ -12,7 +13,7 @@
    <div class="columns is-centered">
     <div class="column">
 
-            <table v-if="activeUser.isAdmin" class="table is-fullwidth">
+            <table v-if="session.user && session.user.isAdmin" class="table is-fullwidth">
   <thead>
     <tr>
       <th>Avatar</th>

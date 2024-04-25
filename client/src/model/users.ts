@@ -1,9 +1,10 @@
-import users from '@/data/users.json';
+import { api } from "../viewModel/userSession";
 
 export interface User {
     firstName: string
     lastName: string
     username: string
+    id: number;
     isAdmin: boolean
     emails: string[]
     avatar: string
@@ -20,17 +21,19 @@ export interface User {
     type: string
   }
 
-export function getUsers(): User[]{
-    return users.users;
-}
+  export async function getUsers() {
+    const data = await api<User[]>("users");
+    return data.data;
+  }
 
 export function getWorkouts(user: User) : Workout[]{
     return user.workouts;
 }
 
-export function getAllWorkouts(): Workout[]{
+export async function getAllWorkouts(): Promise<Workout[]>{
   const allWorkouts: Workout[] = [];
-  users.users.forEach(function(user){
+  const data = api<User[]>("users");
+    (await data).data.forEach(function(user){
     allWorkouts.push(...user.workouts)
   })
   return allWorkouts;

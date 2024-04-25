@@ -1,15 +1,16 @@
 import { ref } from 'vue'
 import { type User, type Workout, getWorkouts, getUsers } from "@/model/users";
-import {activeUser} from "@/components/NavBar.vue";
+import {refSession} from "@/viewModel/userSession";
 
 export const users = ref([] as User[])
 const workouts = ref([] as Workout[])
+let session = refSession();
 
-users.value = getUsers();
+users.value = await getUsers();
 
 export function getUserWorkouts(){
-    if(activeUser.value !== undefined){
-        workouts.value = getWorkouts(activeUser.value);
+    if(session.user){
+        workouts.value = getWorkouts(session.user);
     }
 }
 

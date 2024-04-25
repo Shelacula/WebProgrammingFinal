@@ -2,26 +2,32 @@
 import { RouterLink } from 'vue-router';
 import { ref } from 'vue';
 import {type User, getUsers} from '@/model/users';
-import {getUserWorkouts} from "@/viewModel/workouts"
+import {getUserWorkouts} from "@/viewModel/workouts";
+import { refSession, useLogin} from '@/viewModel/userSession';
+import { parseStats } from '@/viewModel/stats';
 
 let isActive = ref(false);
-const users = ref([] as User[])
+const users = ref([] as User[]);
+const session = refSession();
 
-users.value = getUsers();
+getUsers()
+        .then((data) => users.value = data.slice(0, 5))
+        .catch((error) => console.error(error));
+    ;
 
 
 function toggleMenu() {
   isActive.value = !isActive.value;
 }
-</script>
 
-<script lang="ts">
-export let activeUser = ref();
+const { login, logout } = useLogin();
 
+function doLogin(user: User) {
+    login(user);
+}
 
-function chooseUser(currentUser : User){
-  activeUser.value = currentUser;
-  getUserWorkouts();
+function doLogout() {
+    logout();
 }
 
 </script>
@@ -53,14 +59,14 @@ function chooseUser(currentUser : User){
       <div :class="{ 'is-active': isActive } " id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
     
-            <RouterLink v-if="activeUser !== undefined && activeUser.isAdmin" to ="/admin" class="navbar-item">
+            <RouterLink v-if="session.user && session.user.isAdmin" to ="/admin" class="navbar-item">
               Admin Panel
             </RouterLink>
   
           </div>
     
         <div class="navbar-end">
-          <div class="navbar-item" v-if="activeUser != undefined"><span>Welcome back, {{ activeUser.firstName }}!</span></div>
+          <div class="navbar-item" v-if="session.user"><span>Welcome back, {{ session.user.firstName }}!</span></div>
           <div class="dropdown navbar-item is-hoverable">
                 <div class="dropdown-trigger">
 
@@ -71,7 +77,7 @@ function chooseUser(currentUser : User){
 
                 <div class="dropdown-menu" id="dropdown-menu" role="menu">
                   <div class="dropdown-content">
-                    <a class="dropdown-item"  v-for="user in users" @click="chooseUser(user)">
+                    <a class="dropdown-item"  v-for="user in users" @click="doLogin(user); getUserWorkouts(); parseStats()">
                       <span>{{ user.username }}</span>
                     </a>
                   </div>
@@ -84,6 +90,10 @@ function chooseUser(currentUser : User){
               <a class="button is-primary">
                 <strong>Sign up</strong>
               </a>
+              <a class="button" @click="doLogout()">
+                <strong>Sign Out</strong>
+              </a>
+              
             </div>
           </div>
 

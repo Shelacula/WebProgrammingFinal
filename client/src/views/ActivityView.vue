@@ -2,14 +2,14 @@
     import { ref } from 'vue'
     import { type User, type Workout, getWorkouts, getUsers} from "@/model/users";
     import ActivityCard from "@/components/ActivityCard.vue";
-    import {activeUser} from "@/components/NavBar.vue";
-    import {refWorkouts, deleteWorkout, saveWorkout} from "@/viewModel/workouts"
+    import {refSession} from "@/viewModel/userSession";
+    import {refWorkouts, deleteWorkout, saveWorkout, getUserWorkouts} from "@/viewModel/workouts"
     
 
     
 const workouts = refWorkouts();
 let isActive = ref(false);
-
+let session = refSession();
 
 function toggleMenu() {
 isActive.value = !isActive.value;
@@ -32,7 +32,7 @@ const newWorkout: Workout = {
 <template>
 <div class="columns is-centered">
 
-    <h1 v-if="activeUser == null">Please login to continue.</h1>
+    <h1 v-if="!session.user">Please login to continue.</h1>
 <div v-else class="column is-half">
     
     <div class="block row" >
