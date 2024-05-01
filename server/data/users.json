@@ -1,26 +1,31 @@
 {
-  "users": [
-    {
-      "firstName": "Rey",
-      "lastName": "Solo",
-      "username": "RSolo",
-      "id": 1,
-      "isAdmin": false,
-      "emails": [
-        "rey@sw.com"
-      ],
-      "avatar": "https://i.imgur.com/UpXLAcW.png"
-    },
-    {
-      "firstName": "Leia",
-      "lastName": "Organa",
-      "username": "LOrgana",
-      "id": 3,
-      "isAdmin": true,
-      "emails": [
-        " "
-      ],
-      "avatar": "https://i.imgur.com/K2iHFyO.jpeg"
-    }
-  ]
+    "users": [
+        {
+            "firstName": "Rey",
+            "lastName": "Solo",
+            "username": "RSolo",
+            "id": 1,
+            "isAdmin": false,
+            "emails": ["rey@sw.com"],
+            "avatar": "https://i.imgur.com/UpXLAcW.png"
+        },
+        {
+            "firstName": "Ben",
+            "lastName": "Solo",
+            "username": "BSolo",
+            "id": 2,
+            "isAdmin": false,
+            "emails": [" "],
+            "avatar": "https://i.imgur.com/v35hjnc.png"
+        },
+        {
+            "firstName": "Leia",
+            "lastName": "Organa",
+            "username": "LOrgana",
+            "id": 3,
+            "isAdmin": true,
+            "emails": [" "],
+            "avatar": "https://i.imgur.com/K2iHFyO.jpeg"
+        }
+    ]
 }
