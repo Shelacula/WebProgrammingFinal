@@ -29,11 +29,6 @@ app
 app
   .use('/api/v1/users', users)
 
-
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname,  '../client/dist/index.html'));
-})
-
 // Error handling
 app.use((err, req, res, next) => {
   console.error(err);
