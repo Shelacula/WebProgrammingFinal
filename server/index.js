@@ -8,7 +8,7 @@ const users = require('./controllers/users');
 
 
 const app = express();
-const PORT = 3000;
+const PORT = 10000;
 
 app
   .use(express.static('client/dist'))
