@@ -1,56 +1,17 @@
-const fs = require('fs');
+const fs = require('fs/promises');
+
 const fileName = __dirname + '/../data/users.json';
 
-/** @type { { items: User[] } } */
-let data //= require('../data/users.json');
+/** @type { Promise< { items: User[] } > } */
+const dataP = fs
+        .access(fileName, fs.constants.F_OK)
+        .then(() => fs.readFile(fileName, 'utf8'))
+        .then(content => JSON.parse(content))
 
-function isFileAccessible(fileName) {
-    return new Promise((resolve, reject) => {
-        fs.access(fileName, fs.constants.F_OK, (err) => {
-            if (err) {
-                reject(err);
-                return;
-            }
-            resolve();
-        });
-    });
-}
 
-function readFile(fileName) {
-    return new Promise((resolve, reject) => {
-        fs.readFile(fileName, 'utf8', (err, content) => {
-            if (err) {
-                reject(err);
-                return;
-            }
-            resolve(content);
-        });
-    });
-}
-
-function writeFile(fileName, content) {
-    return new Promise((resolve, reject) => {
-        fs.writeFile(fileName, content, (err) => {
-            if (err) {
-                reject(err);
-                return;
-            }
-            resolve();
-        });
-    });
-}
-
-isFileAccessible(fileName)
-    .then(() => readFile(fileName))
-    .then(content => {
-        data = JSON.parse(content);
-    })
-    .catch(err => {
-        console.error(err);
-    });
-
-function save() {
-    return writeFile(fileName, JSON.stringify( data , null, 2) );
+async function save() {
+    const data = await dataP;
+    return fs.writeFile(fileName, JSON.stringify(data, null, 2));
 }
 
 /**
@@ -58,57 +19,65 @@ function save() {
  * */
 
 /**
- * @returns {User[]}
+ * @returns {Promise<User[]>}
  * */
 async function getAll() {
-    return data.users.map(x=> ({
-        ...x, id: undefined
+    const data = await dataP;
+    return data.items.map(x=> ({
+        ...x, password: undefined, bank: undefined, ssn: undefined,
     }))
 }
 
 /**
  * @param {number} id
- * @returns {User}
+ * @returns {Promise<User>}
  * */
 async function get(id) {
-    return data.users.find(user => user.id == id);
+    const data = await dataP;
+    return data.items.find(item => item.id == id);
 }
 
 /**
  * @param {string} q
- * @returns {User[]}
+ * @returns {Promise<User[]>}
  * */
 async function search(q) {
-    return getAll().filter(item => 
+    return (await getAll()).filter(item => 
         new RegExp(q, 'i').test(item.firstName) ||
         new RegExp(q, 'i').test(item.lastName) ||
-        new RegExp(q, 'i').test(item.username) ||
         new RegExp(q, 'i').test(item.email) );
 }
 
 /**
  * @param {User} user
- * @returns {User}
+ * @returns {Promise<User>}
  * */
 async function add(user) {
-    user.id = data.users.length + 1;
-    data.users.push(user);
-    save().catch(console.error);
+    const data = await dataP;
+    user.id = data.items.length + 1;
+    data.items.push(user);
+    console.log("2: About to save");
+    
+    await save()        
+    console.log("3: Saved")
+
+    console.log("4: About to return user");
     return user;
 }
 
 /**
  * @param {User} user
- * @returns {User}
+ * @returns {Promise<User>}
  * */
 async function update(user) {
-    const index = data.users.findIndex(item => item.id == user.id);
+    const data = await dataP;
+    const index = data.items.findIndex(item => item.id == user.id);
     if (index >= 0) {
-        data.users[index] = {
-            ...data.users[index],
+        data.items[index] = {
+            ...data.items[index],
             ...user
         };
-        save().catch(console.error);
+        await save()
         return user;
     }
     return null;
@@ -116,18 +85,33 @@ async function update(user) {
 
 /**
  * @param {number} id
- * @returns {User | null}
+ * @returns {Promise<User | null>}
  * */
 async function remove(id) {
-    const index = data.users.findIndex(item => item.id == id);
+    const data = await dataP;
+    const index = data.items.findIndex(item => item.id == id);
     if (index >= 0) {
-        const deleted = data.users.splice(index, 1);
-        save().catch(console.error);
+        const deleted = data.items.splice(index, 1);
+        await save()
         return deleted[0];
     }
     return null;
 }
 
+/**
+ * @param {string} email
+ * @param {string} password
+ * @returns {Promise<User>}
+ * */
+async function login(email, password) {
+    const data = await dataP;
+    const user = data.items.find(item => item.email === email);
+    if(!user) throw new Error("Invalid email");
+    //if(user.password !== password) throw new Error("Invalid password");
+
+    return user
+}
+
 module.exports = {
-    getAll, get, search, add, update, remove
+    getAll, get, search, add, update, remove, login
 }
