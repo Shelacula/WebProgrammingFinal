@@ -24,6 +24,6 @@ export function useLogin() {
 
 export const refSession = () => session;
 
-export function api<T>(action: string): Promise< DataEnvelope<T> >{
-    return myFetch.api<T>(action);
+export function api<T>(action: string, data?: unknown, method?: string): Promise< DataEnvelope<T> >{
+    return myFetch.api<T>(action, data, method);
 }
