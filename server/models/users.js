@@ -61,9 +61,7 @@ function save() {
  * @returns {User[]}
  * */
 async function getAll() {
-    return data.users.map(x=> ({
-        ...x, id: undefined
-    }))
+    return data.users;
 }
 
 /**
