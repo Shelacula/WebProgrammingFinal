@@ -61,16 +61,21 @@ function save() {
  * @returns {Workout[]}
  * */
 async function getAll() {
-    return data.workouts.map(x=> ({
-        ...x, uid: undefined
-    }))
+    return data.workouts;
+}
+
+/**
+ * @returns {Workout[]}
+ * */
+async function getUserWorkouts(uid) {
+    return data.workouts.filter(workout => workout.uid == uid);
 }
 
 /**
  * @param {number} pid
  * @returns {Workout}
  * */
-async function get(id) {
+async function get(pid) {
     return data.workouts.find(workout => workout.pid == pid);
 }
 
@@ -91,7 +96,7 @@ async function search(q) {
  * @returns {Workout}
  * */
 async function add(workout) {
-    workout.id = data.workout.length + 1;
+    workout.pid = data.workout.length + 1;
     data.workout.push(workout);
     save().catch(console.error);
     return workout;
@@ -129,5 +134,5 @@ async function remove(pid) {
 }
 
 module.exports = {
-    getAll, get, search, add, update, remove
+    getAll, getUserWorkouts, get, search, add, update, remove
 }

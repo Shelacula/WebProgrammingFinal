@@ -1,3 +1,5 @@
+import { api } from "../viewModel/userSession";
+
 import { ref } from 'vue'
 import { type User, type Workout, getWorkouts, getUsers } from "@/model/users";
 import {refSession} from "@/viewModel/userSession";
@@ -13,9 +15,10 @@ getUsers()
     }
     })
 
-export function getUserWorkouts(){
+export async function getUserWorkouts(){
     if(session.user){
-        workouts.value = getWorkouts(session.user);
+        const data = await api<Workout[]>("api/v1/workouts/" + session.user.id);
+        workouts.value = data ? data.data : [];
     }
 }
 
