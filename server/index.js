@@ -10,10 +10,11 @@ const users = require('./controllers/users');
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
+
 app
   .use(express.static('client/dist'))
 
-app
+// Middleware
   .use(express.json())
   .use((req, res, next) => {
     
@@ -26,14 +27,12 @@ app
 
 
 app
-  .get('/', (req, res) => {
-    res.send('Hello New Paltz!')
-  })
   .use('/api/v1/users', users)
 
-  app.use((req, res) => {
-    res.sendFile(path.join(__dirname,  '../client/dist/index.html'));
-  })
+
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname,  '../client/dist/index.html'));
+})
 
 // Error handling
 app.use((err, req, res, next) => {
