@@ -22,7 +22,7 @@ export interface User {
   }
 
   export async function getUsers() {
-    const data = await api<User[]>("users");
+    const data = await api<User[]>("api/v1/users");
     return data ? data.data : [];
   }
 

@@ -16,5 +16,6 @@ export function rest(url: string, data?: unknown, method?: string){
 }
 
 export function api<T>(action: string, data?: unknown, method?: string): Promise<DataEnvelope<T>>{
+    console.log(`${API_ROOT}/${action}`, data, method);
     return rest(`${API_ROOT}/${action}`, data, method);
 }
