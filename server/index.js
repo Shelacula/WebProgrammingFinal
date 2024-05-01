@@ -27,7 +27,15 @@ app
 
 
 app
+  .get('/', (req, res) => {
+    res.send('Hello New Paltz!')
+  })
   .use('/api/v1/users', users)
+
+// 404
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname,  '../client/dist/index.html'));
+})
 
 // Error handling
 app.use((err, req, res, next) => {
