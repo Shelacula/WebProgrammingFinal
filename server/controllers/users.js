@@ -63,6 +63,18 @@ app
             res.send(response);
         }).catch(next);
     })
+    .post('/login', (req, res, next) => {
+        const { email, password } = req.body;
+        users.login(email, password)
+        .then(result => {
+            /** @type { UserDataEnvelope } */
+            const response = {
+                data: result,
+                isSuccess: true,
+            }
+            res.send(response);
+        }).catch(next);
+    })
     .patch('/:id', (req, res, next) => {
         const user = req.body;
         user.id = req.params.id;

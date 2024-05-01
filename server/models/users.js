@@ -23,9 +23,7 @@ async function save() {
  * */
 async function getAll() {
     const data = await dataP;
-    return data.items.map(x=> ({
-        ...x, password: undefined, bank: undefined, ssn: undefined,
-    }))
+    return data.items;
 }
 
 /**

@@ -23,7 +23,7 @@ export interface User {
 
   export async function getUsers() {
     const data = await api<User[]>("users");
-    return data.data;
+    return data ? data.data : [];
   }
 
 export function getWorkouts(user: User) : Workout[]{
