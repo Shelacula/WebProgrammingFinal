@@ -10,10 +10,6 @@ let isActive = ref(false);
 const users = ref([] as User[]);
 const session = refSession();
 
-getUsers()
-        .then()
-        .catch((error) => console.error(error));
-    ;
 
 
 function toggleMenu() {
