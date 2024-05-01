@@ -1,9 +1,9 @@
 <script setup lang="ts">
     import { ref } from 'vue'
-    import { type User, type Workout, getWorkouts, getUsers} from "@/model/users";
+    import { type User, type Workout} from "@/model/users";
     import ActivityCard from "@/components/ActivityCard.vue";
     import {refSession} from "@/viewModel/userSession";
-    import {refWorkouts, deleteWorkout, saveWorkout, getUserWorkouts} from "@/viewModel/workouts"
+    import {refWorkouts, deleteWorkout, saveWorkout} from "@/viewModel/workouts"
     
 
     
@@ -16,6 +16,8 @@ isActive.value = !isActive.value;
 }
 
 const newWorkout: Workout = {
+    pid: 0,
+    uid: session.user ? session.user.id : 0,
     title: "",
     date: "",
     duration: "",
@@ -39,9 +41,9 @@ const newWorkout: Workout = {
         <button class="button is-primary is-fullwidth" @click="toggleMenu" :class="{ 'is-active': isActive }">Add Workout</button>
     </div>
 
-    <ActivityCard v-for="(workout, i) in workouts"
+    <ActivityCard v-for="workout in workouts"
                     :workout = "workout"
-                    :i = "i" @deleteWorkout="deleteWorkout"
+                    @deleteWorkout="deleteWorkout"
                     />
 
 </div>

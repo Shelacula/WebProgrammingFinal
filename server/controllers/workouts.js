@@ -37,21 +37,9 @@ app
             res.send(response);
         }).catch(next);
     })
-    .get('/:pid', (req, res, next) => {
-        const pid = req.params.pid;
-        workouts.get(+pid)
-        .then(result => {
-            /** @type { WorkoutDataEnvelope } */
-            const response = {
-                data: result,
-                isSuccess: true,
-            }
-            res.send(response);
-        }).catch(next);
-    })
     .get('/:uid', (req, res, next) => {
         const uid = req.params.uid;
-        workouts.get(+uid)
+        workouts.getUserWorkouts(+uid)
         .then(result => {
             /** @type { WorkoutDataEnvelope } */
             const response = {
@@ -90,7 +78,7 @@ app
     .delete('/:pid', (req, res, next) => {
         const pid = req.params.pid;
         workouts.remove(+pid)
-        .then(result => {
+      workouts.remove(+pid)  .then(result => {
             /** @type { WorkoutDataEnvelope } */
             const response = {
                 data: result,

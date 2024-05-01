@@ -1,19 +1,12 @@
 import { api } from "../viewModel/userSession";
-
+import { reactive } from "vue";
 import { ref } from 'vue'
-import { type User, type Workout, getWorkouts, getUsers } from "@/model/users";
+import { type User, type Workout, getUsers, getAllWorkouts } from "@/model/users";
 import {refSession} from "@/viewModel/userSession";
 
-export const users = ref([] as User[])
 const workouts = ref([] as Workout[])
+const allWorkouts  = ref([] as Workout[]);
 let session = refSession();
-
-getUsers()
-    .then((data) => {
-    if(data){
-        users.value = data
-    }
-    })
 
 export async function getUserWorkouts(){
     if(session.user){
@@ -22,14 +15,19 @@ export async function getUserWorkouts(){
     }
 }
 
-export function saveWorkout(workout : Workout){
+export async function saveWorkout(workout : Workout){
     workouts.value.push(workout)
+    await api<Workout[]>("api/v1/workouts/", workout)
 }
 
-export function deleteWorkout(index : number){
-    workouts.value.splice(index, 1);
+export async function deleteWorkout(pid : number){
+    const index = workouts.value.findIndex(item => item.pid == pid);
+    if (index >= 0) {
+        const deleted = workouts.value.splice(index, 1);}
+    await api<Workout>("api/v1/workouts/" + pid, null, 'DELETE')
 }
+
 
 export const refWorkouts = () => workouts;
-export const refUsers = () => users;
+export const refAllWorkouts = () => allWorkouts;
 

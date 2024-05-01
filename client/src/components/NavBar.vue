@@ -11,7 +11,9 @@ const users = ref([] as User[]);
 const session = refSession();
 
 getUsers()
-        .then((data) => users.value = data.slice(0, 5))
+        .then((data) => {
+          if(data){
+              users.value = data}})
         .catch((error) => console.error(error));
     ;
 

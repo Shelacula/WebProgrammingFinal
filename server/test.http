@@ -1,5 +1,23 @@
+###
 GET http://localhost:3000/api/v1/users
 
+###
 GET http://localhost:3000/api/v1/users/2
 
+###
 GET http://localhost:3000/api/v1
+
+###
+POST http://localhost:3000/api/v1/workouts
+Content-Type: application/json
+
+        {
+            "uid": 3,
+            "title": "Ran around campus again",
+            "date" : "2024-03-12",
+            "duration": "10",
+            "distance": "1",
+            "location": "SUNY New Paltz",
+            "picture": "https://i.imgur.com/Z436hZA.jpg",
+            "type": "Run"
+        }

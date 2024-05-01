@@ -3,11 +3,10 @@ import type { Workout } from "@/model/users";
 
 const workouts = defineProps<{
     workout: Workout;
-    i: number;
 }>();
 
 const emit = defineEmits<{
-    deleteWorkout: [index: number]
+    deleteWorkout: [pid: number]
 }>();
 
 </script>
@@ -26,7 +25,7 @@ const emit = defineEmits<{
                 {{ workout.duration }} minutes on {{ workout.date }}
                 </div>
             </div>
-            <button class="delete is-small" @click="emit('deleteWorkout', i)"></button>
+            <button class="delete is-small" @click="emit('deleteWorkout', workout.pid)"></button>
         </div>
     </div>
 </template>

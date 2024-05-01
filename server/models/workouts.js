@@ -96,8 +96,8 @@ async function search(q) {
  * @returns {Workout}
  * */
 async function add(workout) {
-    workout.pid = data.workout.length + 1;
-    data.workout.push(workout);
+    workout.pid = data.workouts.length + 1;
+    data.workouts.push(workout);
     save().catch(console.error);
     return workout;
 }
@@ -127,7 +127,7 @@ async function remove(pid) {
     const index = data.workouts.findIndex(item => item.pid == pid);
     if (index >= 0) {
         const deleted = data.workouts.splice(index, 1);
-        save().catch(console.error);
+        await save();
         return deleted[0];
     }
     return null;

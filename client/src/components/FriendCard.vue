@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import  { type Workout, type User } from "@/model/users";
+import {refUsers} from "@/viewModel/users";
+
+const users = refUsers();
 
 const workouts = defineProps<{
     workout: Workout;
-    user: User;
 }>();
+
+const workoutUser = users.value.find(user => user.id == workouts.workout.uid);
+console.log("Workout card: " + workouts.workout);
+console.log("Post card: " + (workoutUser ? workoutUser.id : ""));
+const workoutUserImg = workoutUser ? workoutUser.avatar : "";
 
 </script>
 
@@ -14,19 +21,19 @@ const workouts = defineProps<{
             <div class="card">
                 <div class="card-image">
                     <figure class="image is-4by3">
-                    <img :src="workout.picture" alt="Post Image">
+                    <img :src="workout.picture != '' ? workout.picture : 'https://i.imgur.com/LWvTlRU.png' " alt="Post Image">
                     </figure>
                 </div>
                 <div class="card-content">
                     <div class="media">
                     <div class="media-left">
                         <figure class="image is-48x48 avatar">
-                        <img :src="user.avatar" alt="User Image">
+                        <img :src="workoutUserImg" alt="User Image">
                         </figure>
                     </div>
                     <div class="media-content">
-                        <p class="title is-4">{{ user.firstName }} {{ user.lastName }}</p>
-                        <p class="subtitle is-6">@{{ user.username }}</p>
+                        <p class="title is-4">{{ workoutUser ?  workoutUser.firstName : "Blank" }} {{ workoutUser ?  workoutUser.lastName : "Blank" }}</p>
+                        <p class="subtitle is-6">@{{ workoutUser ?  workoutUser.username : "Blank" }}</p>
                     </div>
                     </div>
     

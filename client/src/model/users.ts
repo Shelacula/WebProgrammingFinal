@@ -8,10 +8,11 @@ export interface User {
     isAdmin: boolean
     emails: string[]
     avatar: string
-    workouts: Workout[]
   }
   
   export interface Workout {
+    pid: number;
+    uid: number;
     title: string
     date: string
     duration: string
@@ -26,15 +27,7 @@ export interface User {
     return data ? data.data : [];
   }
 
-export function getWorkouts(user: User) : Workout[]{
-    return user.workouts;
-}
-
-export async function getAllWorkouts(): Promise<Workout[]>{
-  const allWorkouts: Workout[] = [];
-  const data = api<User[]>("users");
-    (await data).data.forEach(function(user){
-    allWorkouts.push(...user.workouts)
-  })
-  return allWorkouts;
-}
+  export async function getAllWorkouts() {
+    const data = await api<Workout[]>("api/v1/workouts");
+    return data ? data.data : [];
+  }

@@ -2,7 +2,7 @@
     import { ref } from 'vue'
     import { type User, getUsers } from "@/model/users";
     import {refSession} from "@/viewModel/userSession";
-    import {refUsers} from "@/viewModel/workouts"
+    import {refUsers, deleteUser} from "@/viewModel/users"
 
     const users = refUsers();
     let session = refSession();
@@ -33,7 +33,7 @@
       <td>{{ user.emails }}</td>
       <td>{{ user.username }}</td>
       <td>{{ user.isAdmin }}</td>
-      <td><button class="button">Edit</button> <button class="button">Delete</button></td>
+      <td><button class="button">Edit</button> <button class="button" @click="deleteUser(user.id)">Delete</button></td>
     </tr>
 
 
