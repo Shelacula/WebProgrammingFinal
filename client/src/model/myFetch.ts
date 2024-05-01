@@ -1,7 +1,7 @@
 import type { DataEnvelope } from "./transportTypes";
 
 
-export const API_ROOT = import.meta.env.VITE_API_ROOT;
+export const API_ROOT = "https://webprogrammingfinal-dynamic.onrender.com";
 
 
 export function rest(url: string, data?: unknown, method?: string){
