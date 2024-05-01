@@ -8,6 +8,7 @@
     "build": "npm i --production && cd client && npm i && npm run build"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "dayjs": "^1.11.10",
     "express": "^4.17.1",
     "remixicon": "^4.1.0"
