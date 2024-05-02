@@ -15,7 +15,6 @@ getUsers()
           if(data){
               users.value = data}})
         .catch((error) => console.error(error));
-    ;
 
 
 function toggleMenu() {
@@ -79,7 +78,7 @@ function doLogout() {
         </div>
     
         <div class="navbar-end">
-          <div class="navbar-item" v-if="session.user"><span>Welcome back, {{ session.user.firstName }}!</span></div>
+          <div class="navbar-item" v-if="session.user"><span>Welcome back, <RouterLink :to="'/profiles/' + session.user.id">{{ session.user.firstName }}</RouterLink>!</span></div>
           <div class="dropdown navbar-item is-hoverable" v-if="!session.user">
                 <div class="dropdown-trigger">
 
