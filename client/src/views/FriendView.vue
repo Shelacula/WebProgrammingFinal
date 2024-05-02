@@ -3,10 +3,20 @@
     import FriendCard from "@/components/FriendCard.vue";
     import {refAllWorkouts} from "@/viewModel/workouts"
     import {refSession} from "@/viewModel/userSession";
+    import { getAllWorkouts } from "@/model/users";
 
 const allWorkouts = refAllWorkouts();
 let session = refSession();
 
+getAllWorkouts()
+    .then((data) => {
+    if(data){
+        allWorkouts.value = data;
+        allWorkouts.value.sort(function(a,b){
+            return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
+          });
+    }
+    })
 
 </script>
 
