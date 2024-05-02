@@ -9,9 +9,10 @@ const workouts = defineProps<{
 }>();
 
 const workoutUser = users.value.find(user => user.id == workouts.workout.uid);
-console.log("Workout card: " + workouts.workout);
-console.log("Post card: " + (workoutUser ? workoutUser.id : ""));
 const workoutUserImg = workoutUser ? workoutUser.avatar : "";
+const workoutUserFirstName = workoutUser ?  workoutUser.firstName : "Blank";
+const workoutUserLastName = workoutUser ?  workoutUser.lastName : "Blank";
+const workoutUserUsername = workoutUser ?  workoutUser.username : "Blank"
 
 </script>
 
@@ -32,8 +33,8 @@ const workoutUserImg = workoutUser ? workoutUser.avatar : "";
                         </figure>
                     </div>
                     <div class="media-content">
-                        <p class="title is-4">{{ workoutUser ?  workoutUser.firstName : "Blank" }} {{ workoutUser ?  workoutUser.lastName : "Blank" }}</p>
-                        <p class="subtitle is-6">@{{ workoutUser ?  workoutUser.username : "Blank" }}</p>
+                        <p class="title is-4">{{ workoutUserFirstName }} {{ workoutUserLastName }}</p>
+                        <p class="subtitle is-6">@{{ workoutUserUsername }}</p>
                     </div>
                     </div>
     

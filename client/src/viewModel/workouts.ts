@@ -8,6 +8,16 @@ const workouts = ref([] as Workout[])
 const allWorkouts  = ref([] as Workout[]);
 let session = refSession();
 
+getAllWorkouts()
+    .then((data) => {
+    if(data){
+        allWorkouts.value = data;
+        allWorkouts.value.sort(function(a,b){
+            return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
+          });
+    }
+    })
+
 export async function getUserWorkouts(){
     if(session.user){
         const data = await api<Workout[]>("api/v1/workouts/" + session.user.id);
