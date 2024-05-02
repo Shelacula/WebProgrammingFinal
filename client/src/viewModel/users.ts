@@ -4,6 +4,7 @@ import { type User, type Workout, getUsers } from "@/model/users";
 import {refSession} from "@/viewModel/userSession";
 
 export const users = ref([] as User[])
+export const searchArr = ref([] as User[])
 let session = refSession();
 
 getUsers()
@@ -19,7 +20,7 @@ export async function deleteUser(uid : number){
             const index = users.value.findIndex(item => item.id == uid);
             if (index >= 0) {
                 const deleted = users.value.splice(index, 1);}
-            await api<Workout>("api/v1/users/" + uid, null, 'DELETE')
+            await api<User>("api/v1/users/" + uid, null, 'DELETE')
         } else{
             console.log("Cannot delete own account");
         }
@@ -27,7 +28,7 @@ export async function deleteUser(uid : number){
 }
 
 export async function addUser(user : User){
-    await api<Workout>("api/v1/users/", user, 'POST')
+    await api<User>("api/v1/users/", user, 'POST')
     getUsers()
     .then((data) => {
     if(data){
@@ -36,4 +37,10 @@ export async function addUser(user : User){
     })
 }
 
+export async function searchUsers(search : string){
+    const data = await api<User[]>("api/v1/users/search?q=" + search);
+    searchArr.value = data ? data.data : [];
+}
+
 export const refUsers = () => users;
+export const refSearch = () => searchArr;

@@ -61,7 +61,3 @@ const newUser: User = {
 </div>
 </div>
 </template>
-
-<style scoped>
-
-</style>

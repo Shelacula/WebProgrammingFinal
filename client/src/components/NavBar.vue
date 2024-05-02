@@ -64,8 +64,19 @@ function doLogout() {
             <RouterLink v-if="session.user && session.user.isAdmin" to ="/admin" class="navbar-item">
               Admin Panel
             </RouterLink>
+
+            <div class="field navbar-item">
+            <div class="control">
+                <input class="input" type="text" placeholder="Search People">
+            </div>
+            <button class="button search">
+              <span class="icon is-small">
+                <i class="ri-search-line"></i>
+              </span>
+            </button>
+            </div>
   
-          </div>
+        </div>
     
         <div class="navbar-end">
           <div class="navbar-item" v-if="session.user"><span>Welcome back, {{ session.user.firstName }}!</span></div>
@@ -103,3 +114,23 @@ function doLogout() {
       </div>
     </nav>
   </template>
+
+<style scoped>
+.search {
+  background: transparent;
+  border: none;
+  transition: .2s;
+  margin-left: 10px;
+}
+
+.search:hover{
+  border:unset;
+  border: 1px solid #dbdbdb;
+}
+
+.icon{
+  color: #fff;
+}
+
+
+</style>
