@@ -11,10 +11,10 @@ let session = refSession();
 getAllWorkouts()
     .then((data) => {
     if(data){
-        allWorkouts.value = data;
-        allWorkouts.value.sort(function(a,b){
+        data.sort(function(a,b){
             return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
           });
+          allWorkouts.value = data;
     }
     })
 
@@ -27,6 +27,7 @@ getAllWorkouts()
 
         <FriendCard v-for="workout in allWorkouts"
                     :workout = "workout"
+                    :key = "workout.pid"
                     />
 
 
