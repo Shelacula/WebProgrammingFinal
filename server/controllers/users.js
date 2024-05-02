@@ -51,10 +51,10 @@ app
     })
     .post('/', (req, res, next) => {
         const user = req.body;
-        console.log("1: About to add user");
+        user.id = users.length + 1;
+        user.isAdmin = false;
         users.add(user)
         .then(result => {
-            console.log("5: Returned from add user");
             /** @type { UserDataEnvelope } */
             const response = {
                 data: result,

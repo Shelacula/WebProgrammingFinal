@@ -5,9 +5,9 @@ import {type User, getUsers} from '@/model/users';
 import {getUserWorkouts} from "@/viewModel/workouts";
 import { refSession, useLogin} from '@/viewModel/userSession';
 import { parseStats } from '@/viewModel/stats';
+import { users } from '@/viewModel/users';
 
 let isActive = ref(false);
-const users = ref([] as User[]);
 const session = refSession();
 
 getUsers()
@@ -69,7 +69,7 @@ function doLogout() {
     
         <div class="navbar-end">
           <div class="navbar-item" v-if="session.user"><span>Welcome back, {{ session.user.firstName }}!</span></div>
-          <div class="dropdown navbar-item is-hoverable">
+          <div class="dropdown navbar-item is-hoverable" v-if="!session.user">
                 <div class="dropdown-trigger">
 
                   <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -89,10 +89,10 @@ function doLogout() {
 
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button" @click="doLogout()">
+              <RouterLink v-if="!session.user" to ="/signup" class="button is-primary">
+              Sign Up
+              </RouterLink>
+              <a class="button" @click="doLogout()" v-if="session.user">
                 <strong>Sign Out</strong>
               </a>
               

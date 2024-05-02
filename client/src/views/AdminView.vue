@@ -1,6 +1,5 @@
 <script setup lang="ts">
     import { ref } from 'vue'
-    import { type User, getUsers } from "@/model/users";
     import {refSession} from "@/viewModel/userSession";
     import {refUsers, deleteUser} from "@/viewModel/users"
 

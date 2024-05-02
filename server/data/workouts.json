@@ -54,6 +54,17 @@
       "location": "",
       "picture": "",
       "type": "Swim"
+    },
+    {
+      "pid": 6,
+      "uid": 1,
+      "title": "took the dog for a walk",
+      "date": "2024-05-02",
+      "duration": "40",
+      "distance": "2",
+      "location": "",
+      "picture": "",
+      "type": "Walk"
     }
   ]
 }

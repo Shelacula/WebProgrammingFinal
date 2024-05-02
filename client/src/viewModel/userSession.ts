@@ -13,11 +13,11 @@ export function useLogin() {
     return {
         login(user: User) {
             session.user = user;
-            router.push("/");
+            router.push("/activity");
         },
         logout() {
             session.user = null;
-            router.push("/");
+            router.push("/activity");
         }
     };
 }

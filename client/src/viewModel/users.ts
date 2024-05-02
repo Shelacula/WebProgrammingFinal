@@ -1,5 +1,4 @@
 import { api } from "../viewModel/userSession";
-
 import { ref } from 'vue'
 import { type User, type Workout, getUsers } from "@/model/users";
 import {refSession} from "@/viewModel/userSession";
@@ -25,6 +24,16 @@ export async function deleteUser(uid : number){
             console.log("Cannot delete own account");
         }
     }
+}
+
+export async function addUser(user : User){
+    await api<Workout>("api/v1/users/", user, 'POST')
+    getUsers()
+    .then((data) => {
+    if(data){
+        users.value = data
+    }
+    })
 }
 
 export const refUsers = () => users;
