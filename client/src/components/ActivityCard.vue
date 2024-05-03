@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import {ref} from 'vue'
 import type { Workout } from "@/model/users";
+import { refSession } from '@/viewModel/userSession';
+
+const session = refSession();
 
 const workouts = defineProps<{
     workout: Workout;
@@ -25,7 +29,7 @@ const emit = defineEmits<{
                 {{ workout.duration }} minutes on {{ workout.date }}
                 </div>
             </div>
-            <button class="delete is-small" @click="emit('deleteWorkout', workout.pid)"></button>
+            <button class="delete is-small" @click="emit('deleteWorkout', workout.pid)" v-if='workout.uid == (session.user ? session.user.id : "")'></button>
         </div>
     </div>
 </template>

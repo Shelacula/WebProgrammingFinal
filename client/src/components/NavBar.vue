@@ -9,6 +9,7 @@ import { users } from '@/viewModel/users';
 
 let isActive = ref(false);
 const session = refSession();
+const searchKey = "";
 
 getUsers()
         .then((data) => {
@@ -66,19 +67,21 @@ function doLogout() {
 
             <div class="field navbar-item">
             <div class="control">
-                <input class="input" type="text" placeholder="Search People">
+                <input class="input" type="text" placeholder="Search People" v-model="searchKey">
             </div>
+            <RouterLink :to="'/search/' + (searchKey ? searchKey : 'empty')">
             <button class="button search">
               <span class="icon is-small">
                 <i class="ri-search-line"></i>
               </span>
             </button>
+          </RouterLink>
             </div>
   
         </div>
     
         <div class="navbar-end">
-          <div class="navbar-item" v-if="session.user"><span>Welcome back, <RouterLink :to="'/profiles/' + session.user.id">{{ session.user.firstName }}</RouterLink>!</span></div>
+          <div class="navbar-item" v-if="session.user"><span>Welcome back, <RouterLink :to="'/profiles/' + session.user.id" class="profilelink">{{ session.user.firstName }}</RouterLink>!</span></div>
           <div class="dropdown navbar-item is-hoverable" v-if="!session.user">
                 <div class="dropdown-trigger">
 
@@ -131,5 +134,13 @@ function doLogout() {
   color: #fff;
 }
 
+.profilelink {
+  color: #fff;
+  transition: .2s;
+}
+
+.profilelink:hover {
+  color: #a263b3;
+}
 
 </style>

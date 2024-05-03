@@ -4,7 +4,6 @@ import { type User, type Workout, getUsers } from "@/model/users";
 import {refSession} from "@/viewModel/userSession";
 
 export const users = ref([] as User[])
-export const searchArr = ref([] as User[])
 let session = refSession();
 
 getUsers()
@@ -39,8 +38,7 @@ export async function addUser(user : User){
 
 export async function searchUsers(search : string){
     const data = await api<User[]>("api/v1/users/search?q=" + search);
-    searchArr.value = data ? data.data : [];
+    return data ? data.data : [];
 }
 
 export const refUsers = () => users;
-export const refSearch = () => searchArr;

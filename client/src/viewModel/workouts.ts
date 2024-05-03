@@ -6,6 +6,7 @@ import {refSession} from "@/viewModel/userSession";
 
 const workouts = ref([] as Workout[])
 const allWorkouts  = ref([] as Workout[]);
+const userWorkouts = ref([] as Workout[]);
 let session = refSession();
 
 export async function getUserWorkouts(){
@@ -27,7 +28,12 @@ export async function deleteWorkout(pid : number){
     await api<Workout>("api/v1/workouts/" + pid, null, 'DELETE')
 }
 
+export async function searchUserWorkouts(uid : number){
+        const data = await api<Workout[]>("api/v1/workouts/" + uid);
+        userWorkouts.value = data ? data.data : [];
+}
+
 
 export const refWorkouts = () => workouts;
 export const refAllWorkouts = () => allWorkouts;
-
+export const refUserWorkouts = () => userWorkouts;
