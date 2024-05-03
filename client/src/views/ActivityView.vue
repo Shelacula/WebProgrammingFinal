@@ -34,8 +34,7 @@ const newWorkout: Workout = {
 <template>
 <div class="columns is-centered">
 
-    <h1 v-if="!session.user">Please login to continue.</h1>
-<div v-else class="column is-half">
+<div class="column is-half">
     
     <div class="block row" >
         <button class="button is-primary is-fullwidth" @click="toggleMenu" :class="{ 'is-active': isActive }">Add Workout</button>

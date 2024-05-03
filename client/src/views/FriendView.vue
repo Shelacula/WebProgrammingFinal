@@ -22,8 +22,8 @@ getAllWorkouts()
 
 <template>
     <div class="columns is-centered">
-        <h1 v-if="!session.user">Please login to continue.</h1>
-<div v-else class="column is-half">
+
+<div class="column is-half">
 
         <FriendCard v-for="workout in allWorkouts"
                     :workout = "workout"
