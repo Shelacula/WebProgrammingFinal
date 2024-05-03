@@ -77,12 +77,13 @@ async function get(id) {
  * @returns {User[]}
  * */
 async function search(q) {
-    const searchArray = getAll().filter(item => 
+    const searchArray = (await getAll()).filter(item => 
         new RegExp(q, 'i').test(item.firstName) ||
         new RegExp(q, 'i').test(item.lastName) ||
         new RegExp(q, 'i').test(item.username) ||
         new RegExp(q, 'i').test(item.emails) );
     console.log(searchArray);
+    return searchArray
 }
 
 /**

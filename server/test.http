@@ -8,6 +8,9 @@ GET http://localhost:3000/api/v1/users/2
 GET http://localhost:3000/api/v1
 
 ###
+GET http://localhost:3000/api/v1/users/search?q=rey
+
+###
 POST http://localhost:3000/api/v1/workouts
 Content-Type: application/json
 

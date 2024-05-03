@@ -9,7 +9,7 @@ import { users } from '@/viewModel/users';
 
 let isActive = ref(false);
 const session = refSession();
-const searchKey = "";
+const searchKey = ref("");
 
 getUsers()
         .then((data) => {

@@ -9,17 +9,28 @@ const route = useRoute();
 const search = route.params.searchKey.toString()
 const foundUsers = ref([] as User[])
 
-searchUsers(search)
+console.log(search)
+
+if(search != "empty"){
+    searchUsers(search)
     .then((data) => {
     if(data){
         foundUsers.value = data
     }
     })
+}
+
 
 </script>
 
 <template>
+<div class="columns is-centered">
+    <div class="column is-half">
 
+
+
+    </div>
+</div>
 
 </template>
 
