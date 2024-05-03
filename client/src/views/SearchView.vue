@@ -3,6 +3,7 @@ import {ref} from 'vue'
 import { useRoute } from 'vue-router'
 import {type User} from "@/model/users"
 import {searchUsers} from "@/viewModel/users"
+import SearchCard from "@/components/SearchCard.vue";
 
 
 const route = useRoute();
@@ -27,6 +28,10 @@ if(search != "empty"){
 <div class="columns is-centered">
     <div class="column is-half">
 
+    <SearchCard v-for="user in foundUsers"
+                :user = "user"
+                :key = "user.id"
+                />     
 
 
     </div>

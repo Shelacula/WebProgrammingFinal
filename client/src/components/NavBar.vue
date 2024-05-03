@@ -119,7 +119,7 @@ function doLogout() {
 
 <style scoped>
 .search {
-  background: transparent;
+  background: #363636;
   border: none;
   transition: .2s;
   margin-left: 10px;
@@ -135,12 +135,12 @@ function doLogout() {
 }
 
 .profilelink {
-  color: #fff;
+  color: #a263b3;
   transition: .2s;
 }
 
 .profilelink:hover {
-  color: #a263b3;
+  color: #d7ade2;
 }
 
 </style>

@@ -33,7 +33,7 @@ const workoutUserUsername = workoutUser ?  workoutUser.username : "Blank"
                         </figure>
                     </div>
                     <div class="media-content">
-                        <p class="title is-4">{{ workoutUserFirstName }} {{ workoutUserLastName }}</p>
+                        <p class="title is-4"><RouterLink :to="'/profiles/' + (workoutUser ? workoutUser.id : 0)" class="profilelink">{{ workoutUserFirstName }} {{ workoutUserLastName }}</RouterLink></p>
                         <p class="subtitle is-6">@{{ workoutUserUsername }}</p>
                     </div>
                     </div>
@@ -68,5 +68,9 @@ const workoutUserUsername = workoutUser ?  workoutUser.username : "Blank"
 .friend-title{
     font-size:1.2em;
     font-weight:bold;
+}
+
+a {
+  color: #000 !important;
 }
 </style>
