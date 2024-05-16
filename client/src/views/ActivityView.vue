@@ -138,14 +138,14 @@ async function getAsyncData(){
             v-model="name"
             placeholder="e.g. Rey"
             :data="filteredDataObj"
-            field="user.firstName"
+            field="firstName"
             @input="getAsyncData"
             @select="(option: User) => (selectedUser = option)">
             <template #empty> No results found </template>
         </o-autocomplete>
     </o-field>
 
-    <p><b>Selected:</b> {{ selectedUser }}</p>
+    <p><b>Selected:</b> {{ selectedUser.firstName }}</p>
     <br>
 
 <div class="field is-grouped">
