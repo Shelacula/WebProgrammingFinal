@@ -1,11 +1,12 @@
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { ref, computed } from 'vue'
     import { type User, type Workout} from "@/model/users";
+    import {refUsers} from "@/viewModel/users"
+    import {searchUsers} from "@/viewModel/users"
     import ActivityCard from "@/components/ActivityCard.vue";
     import {refSession} from "@/viewModel/userSession";
     import {refWorkouts, deleteWorkout, saveWorkout} from "@/viewModel/workouts"
-    
-
+    import '@oruga-ui/theme-bulma/dist/bulma.css'
     
 const workouts = refWorkouts();
 let isActive = ref(false);
@@ -26,6 +27,19 @@ const newWorkout: Workout = {
     picture: "",
     type: ""    
 };
+
+
+const name = ref("");
+
+const selectedUser = ref();
+const filteredDataObj = ref([] as User[]);
+
+
+async function getAsyncData(){
+    const response = await searchUsers(name.value);
+    filteredDataObj.value = response;
+    console.log(response);
+}
 
 </script>
 
@@ -117,6 +131,22 @@ const newWorkout: Workout = {
     </div>
 </div>
 </div>
+
+
+    <o-field label="Tag a friend!">
+        <o-autocomplete
+            v-model="name"
+            placeholder="e.g. Rey"
+            :data="filteredDataObj"
+            field="user.firstName"
+            @input="getAsyncData"
+            @select="(option: User) => (selectedUser = option)">
+            <template #empty> No results found </template>
+        </o-autocomplete>
+    </o-field>
+
+    <p><b>Selected:</b> {{ selectedUser }}</p>
+    <br>
 
 <div class="field is-grouped">
 <div class="control">

@@ -85,10 +85,7 @@ async function get(pid) {
  * */
 async function search(q) {
     return getAll().filter(item => 
-        new RegExp(q, 'i').test(item.firstName) ||
-        new RegExp(q, 'i').test(item.lastName) ||
-        new RegExp(q, 'i').test(item.username) ||
-        new RegExp(q, 'i').test(item.email) );
+        new RegExp(q, 'i').test(item.username) );
 }
 
 /**
